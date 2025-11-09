@@ -2,32 +2,32 @@
   "linear": {
     "type": "LinearRegression",
     "params": {},
-    "rmse": 0.7978516348811729,
-    "r2": 0.5036635195170313,
-    "mae": 0.5312301247885687
+    "rmse": 0.7205095145054944,
+    "r2": 0.611456745810643,
+    "mae": 0.5290607356851638
   },
   "rf": {
     "type": "RandomForestRegressor",
     "params": {
-      "n_estimators": 300,
-      "max_depth": null,
-      "random_state": 2025,
+      "n_estimators": 500,
+      "max_depth": 2,
+      "random_state": 42,
       "n_jobs": -1
     },
-    "rmse": 0.5060780167461221,
-    "r2": 0.8063583951409783,
-    "mae": 0.3327271689689968
+    "rmse": 0.8456558675167518,
+    "r2": 0.4648368589925524,
+    "mae": 0.6432872879157461
   },
   "gbr": {
     "type": "GradientBoostingRegressor",
     "params": {
       "n_estimators": 300,
-      "learning_rate": 0.05,
+      "learning_rate": 0.04,
       "max_depth": 3,
-      "random_state": 2025
+      "random_state": 42
     },
-    "rmse": 0.5151730858887882,
-    "r2": 0.7993528200845398,
-    "mae": 0.35524602854176013
+    "rmse": 0.5247185332962708,
+    "r2": 0.7939448468238368,
+    "mae": 0.36346909509954417
   }
 }

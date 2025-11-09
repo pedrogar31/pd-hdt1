@@ -1,4 +1,4 @@
-seed: 2025
+seed: 42
 
 input:
   dataset_path: data/dataset_v1.csv
@@ -21,17 +21,17 @@ models:
   - name: rf
     type: RandomForestRegressor
     params:
-      n_estimators: 300
-      max_depth: null
-      random_state: 2025
+      n_estimators: 500
+      max_depth: 2
+      random_state: 42
       n_jobs: -1
   - name: gbr
     type: GradientBoostingRegressor
     params:
       n_estimators: 300
-      learning_rate: 0.05
+      learning_rate: 0.04
       max_depth: 3
-      random_state: 2025
+      random_state: 42
 
 metrics:
   - r2
