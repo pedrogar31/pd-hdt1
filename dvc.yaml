@@ -5,7 +5,7 @@ stages:
     deps:
       - preprocess.py
       - params.yaml
-      - data/dataset_v1.csv
+      - data/dataset_v2.csv
     outs:
       - data/processed/processed.parquet
       - data/splits/X_train.parquet
