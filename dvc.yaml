@@ -1,0 +1,48 @@
+stages:
+
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+      - preprocess.py
+      - params.yaml
+      - data/dataset_v1.csv
+    outs:
+      - data/processed/processed.parquet
+      - data/splits/X_train.parquet
+      - data/splits/X_test.parquet
+      - data/splits/y_train.parquet
+      - data/splits/y_test.parquet
+
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - params.yaml
+      - data/splits/X_train.parquet
+      - data/splits/y_train.parquet
+    outs:
+      - models/best_model.joblib
+    metrics:
+      - artifacts/metrics_by_model.json:
+          cache: false
+
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+      - evaluate.py
+      - params.yaml
+      - models/best_model.joblib
+      - data/splits/X_test.parquet
+      - data/splits/y_test.parquet
+    metrics:
+      - artifacts/metrics.json:
+          cache: false
+    plots:
+      - artifacts/preds.csv:
+          x: y_true
+          y: y_pred
+
+
+
+
+                
