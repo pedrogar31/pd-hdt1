@@ -1,0 +1,98 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+    - path: data/dataset_v1.csv
+      hash: md5
+      md5: fa9fe4cf24f70b69ac65fb33062ddf34
+      size: 1915795
+    - path: params.yaml
+      hash: md5
+      md5: afe4f8c55c0efae84980a25d2356ccc3
+      size: 1012
+    - path: preprocess.py
+      hash: md5
+      md5: a25ce0f2e5fd88e31f1c84b8100d7083
+      size: 2964
+    outs:
+    - path: data/processed/processed.parquet
+      hash: md5
+      md5: e82893c7be2fd14da407df2950d17ed2
+      size: 811876
+    - path: data/splits/X_test.parquet
+      hash: md5
+      md5: 7340b7206dcb29c73bc4996595d09d7c
+      size: 223732
+    - path: data/splits/X_train.parquet
+      hash: md5
+      md5: 3344e24cda599ccf5b99a8706f1fb9b0
+      size: 772659
+    - path: data/splits/y_test.parquet
+      hash: md5
+      md5: 61d37963ed34cb328d7f1f0a41f71d37
+      size: 41458
+    - path: data/splits/y_train.parquet
+      hash: md5
+      md5: ad025835ac631a55a81a8b5758d69c8d
+      size: 140790
+  train:
+    cmd: python train.py
+    deps:
+    - path: data/splits/X_train.parquet
+      hash: md5
+      md5: 3344e24cda599ccf5b99a8706f1fb9b0
+      size: 772659
+    - path: data/splits/y_train.parquet
+      hash: md5
+      md5: ad025835ac631a55a81a8b5758d69c8d
+      size: 140790
+    - path: params.yaml
+      hash: md5
+      md5: afe4f8c55c0efae84980a25d2356ccc3
+      size: 1012
+    - path: train.py
+      hash: md5
+      md5: 7b39ae3521afbec2a3ebb7674c091003
+      size: 2606
+    outs:
+    - path: artifacts/metrics_by_model.json
+      hash: md5
+      md5: 0b3de89bad4631c2fb10638a0cb4e71b
+      size: 739
+    - path: models/best_model.joblib
+      hash: md5
+      md5: a271031fb814aff1aa98bc2e9af9d038
+      size: 434821681
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+    - path: data/splits/X_test.parquet
+      hash: md5
+      md5: 7340b7206dcb29c73bc4996595d09d7c
+      size: 223732
+    - path: data/splits/y_test.parquet
+      hash: md5
+      md5: 61d37963ed34cb328d7f1f0a41f71d37
+      size: 41458
+    - path: evaluate.py
+      hash: md5
+      md5: d5cfe889c2ff527c064ea3d7e4e30534
+      size: 1052
+    - path: models/best_model.joblib
+      hash: md5
+      md5: a271031fb814aff1aa98bc2e9af9d038
+      size: 434821681
+    - path: params.yaml
+      hash: md5
+      md5: afe4f8c55c0efae84980a25d2356ccc3
+      size: 1012
+    outs:
+    - path: artifacts/metrics.json
+      hash: md5
+      md5: f56b062f65d86ceef208dbaae52cc867
+      size: 94
+    - path: artifacts/preds.csv
+      hash: md5
+      md5: 76b111fcd584ba1ce1142a585ba68d8d
+      size: 104752

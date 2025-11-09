@@ -1,0 +1,33 @@
+{
+  "linear": {
+    "type": "LinearRegression",
+    "params": {},
+    "rmse": 0.7978516348811729,
+    "r2": 0.5036635195170313,
+    "mae": 0.5312301247885687
+  },
+  "rf": {
+    "type": "RandomForestRegressor",
+    "params": {
+      "n_estimators": 300,
+      "max_depth": null,
+      "random_state": 2025,
+      "n_jobs": -1
+    },
+    "rmse": 0.5060780167461221,
+    "r2": 0.8063583951409783,
+    "mae": 0.3327271689689968
+  },
+  "gbr": {
+    "type": "GradientBoostingRegressor",
+    "params": {
+      "n_estimators": 300,
+      "learning_rate": 0.05,
+      "max_depth": 3,
+      "random_state": 2025
+    },
+    "rmse": 0.5151730858887882,
+    "r2": 0.7993528200845398,
+    "mae": 0.35524602854176013
+  }
+}
